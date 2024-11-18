@@ -16,3 +16,16 @@ resource "aws_subnet" "public-subnet" {
   map_public_ip_on_launch = true
 }
 
+resource "aws_security_group" "maintanance_ssh_access" {
+  count       = var.allow_ssh ? 1 : 0
+  name        = "ssh_access_group"
+  description = "allow ssh access on port 22"
+  vpc_id      = aws_vpc.main-vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
