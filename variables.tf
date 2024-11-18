@@ -1,25 +1,33 @@
 variable "region" {
-  description = "AWS Region"
+  description = "AWS region"
   type        = string
-  default     = "eu-central-1"
 }
 
 variable "public_subnet_cidr" {
   description = "CIDR block for the public subnet"
   type        = string
-  default     = "10.0.0.0/20"
 }
 
 variable "availability_zone" {
-  description = "Availability Zone for the resources"
+  description = "Availability zone for the public subnet"
   type        = string
-  default     = "eu-central-1a"
 }
 
 variable "allow_ssh" {
-  description = "Allow SSH access to instances"
+  description = "Whether to allow SSH access"
   type        = bool
-  default     = true  # Ändern Sie dies je nach Umgebungsanforderung
+  default     = true
 }
+
+variable "ec2_ami" {
+  description = "AMI ID for EC2 instance"
+  type        = string
+}
+
+variable "ec2_instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
+
 
 
